@@ -6,13 +6,20 @@
 - QtDesigner 학습
 - Naver API 뉴스검색 앱 만들기
     - Python 3.11.2
-    - PyQt5
-    - Qt Designeer
-    - Naver OpenAPI
+    - Naver OpenAPI 사용
+    - PyQt5 / Qt Designeer
 
 ![네이버뉴스앱](https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyQt/news1.png)
 
-<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyQt/news2.png" width = "800" />
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyQt/news2.png" width = "780" />
+
+- Naver API 영화검색 앱 만들기
+    - Python 3.11.2
+    - Naver OpenAPI 사용
+    - PyQt5 / Qt Designeer
+    - urllib.request.urlopen 이미지다운로드기술 사용 *
+
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyQt/naver_movie.png" width = "780" />
 
 ## DB연동 GUI 개발 학습
 
