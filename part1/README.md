@@ -22,6 +22,10 @@
 <img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyQt/naver_movie.png" width = "780" />
 
 ## DB연동 GUI 개발 학습
+- 주소록 프로그램 만들기
+    - Python 3.11.2
+    - My
 
+![주소록앱1]()
 ## 미니프로젝트 실습
 
