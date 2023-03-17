@@ -63,7 +63,10 @@
 
 - 이메일 전송, 대량메일 전송
 
- 
+- 게임만들기 - DinoRun
+  - PyGame
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyGame/Assets/pygame1.png" width = "780" />
+
 ## 미니프로젝트 실습
 - 키오스크 만들기 
 ![팀리포지토리](https://github.com/annual-salary-investigation)
