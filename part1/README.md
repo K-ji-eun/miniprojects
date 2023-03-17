@@ -65,7 +65,7 @@
 
 - 게임만들기 - DinoRun
   - PyGame
-<img src = "https://github.com/K-ji-eun/miniprojects/part1/studyPyGame/Assets/pygame1.png" width = "780" />
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyGame/pygame1.png" width = "780" />
 
 ## 미니프로젝트 실습
 - 키오스크 만들기 
