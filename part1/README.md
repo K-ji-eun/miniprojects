@@ -77,7 +77,7 @@
   - PyQt
     - QWebEnginView 추가
 
-<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyGame/folium_gui.png" width = "780" />
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPython/folium_gui.png" width = "780" />
 
 ## 미니프로젝트 실습
 - 키오스크 만들기 
