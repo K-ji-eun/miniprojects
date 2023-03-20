@@ -79,6 +79,11 @@
 
 <img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPython/folium_gui.png" width = "780" />
 
+- 계산기앱
+  - PyQt
+  - 16개 signal을 1개의 slot함수로 처리
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyQt/calculator.png" width = "780" />
+
 ## 미니프로젝트 실습
 - 키오스크 만들기 
 ![팀리포지토리](https://github.com/annual-salary-investigation)
