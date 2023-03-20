@@ -67,6 +67,8 @@
   - PyGame
 <img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyGame/pygame1.png" width = "780" />
 
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part1/studyPyGame/pygame.png" width = "780" />
+
 ## 미니프로젝트 실습
 - 키오스크 만들기 
 ![팀리포지토리](https://github.com/annual-salary-investigation)
