@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FakeIoTDeviceApp.Properties
+namespace SmartHomeMonitoringApp.Properties
 {
 
 

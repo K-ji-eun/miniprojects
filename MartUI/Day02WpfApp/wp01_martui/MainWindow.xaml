@@ -8,8 +8,13 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:wp01_martui"
         mc:Ignorable="d"
-        Title="TT Mart" Height="320" Width="500">
-    <Grid>
-        
-    </Grid>
+        Title="TT Mart" Height="320" Width="500" FontFamily="NanumGothic" ResizeMode="NoResize" Loaded="MetroWindow_Loaded" >
+    <StackPanel>
+        <Label Content="로그인" FontSize="22" HorizontalAlignment="Center" Margin="18" ></Label>
+        <Label Content="아이디" Width="204" />
+        <TextBox x:Name="txtId" FontSize="18" Width="200" KeyDown="txtId_KeyDown" Text="user"/>
+        <Label Content="비밀번호" Width="204"/>
+        <TextBox x:Name="txtPassword" FontSize="18" Width="200" KeyDown="txtPassword_KeyDown" Text="12345" />
+        <Button x:Name="btnOk" Click="btnOk_Click" Content="확인" FontSize="15" Margin="30" Width="100" Height="35"></Button>
+    </StackPanel>
 </mah:MetroWindow>
