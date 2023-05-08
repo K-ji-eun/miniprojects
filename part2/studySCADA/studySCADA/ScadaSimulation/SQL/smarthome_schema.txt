@@ -1,0 +1,7 @@
+CREATE TABLE `miniproject`.`smarthomesensor` (
+  `id` INT NOT NULL,
+  `Home_Id` VARCHAR(45) NOT NULL,
+  `Room_Name` VARCHAR(45) NOT NULL,
+  `Sensing_DateTime` FLOAT NOT NULL,
+  `Humid` FLOAT NOT NULL,
+  PRIMARY KEY (`id`));
