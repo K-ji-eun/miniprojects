@@ -19,7 +19,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="45"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="388*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Orientation="Horizontal">
@@ -31,7 +32,7 @@
                     Style="{StaticResource MahApps.Styles.Button.Dialogs.Accent}" Click="BtnConnect_Click"/>
         </StackPanel>
 
-        <RichTextBox Grid.Row="1" x:Name="RtbLog" Margin="10" VerticalScrollBarVisibility="Visible">
+        <RichTextBox Grid.Row="1" x:Name="RtbLog" Margin="10,10,10,10" VerticalScrollBarVisibility="Visible" Grid.RowSpan="2">
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="0" />
