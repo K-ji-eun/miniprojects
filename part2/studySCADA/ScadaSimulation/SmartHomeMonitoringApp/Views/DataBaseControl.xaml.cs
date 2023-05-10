@@ -36,13 +36,32 @@ namespace SmartHomeMonitoringApp.Views
 
             IsConnected = false;     // 아직 접속이 안되었음
             BtnConnDb.IsChecked = false;
+
+            // 실시간 모니터링이 넘어왔을 때
+            if (Commons.MQTT_CLIENT != null && Commons.MQTT_CLIENT.IsConnected)
+            {
+                IsConnected = true;
+                BtnConnDb.Content = "MQTT 연결중";
+                BtnConnDb.IsChecked = true;
+                Commons.MQTT_CLIENT.MqttMsgPublishReceived += MQTT_CLIENT_MqttMsgPublishReceived;
+            }
+        }
+
+        private void MQTT_CLIENT_MqttMsgPublishReceived1(object sender, MqttMsgPublishEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         // 토글버튼 클릭이벤트 핸들러
         private void BtnConnDb_Click(object sender, RoutedEventArgs e)
         {
+            ConnectDB();
+        }
+
+        private void ConnectDB()
+        {
             if (IsConnected == false)
-            {               
+            {
                 // Mqtt 브로커 생성
                 Commons.MQTT_CLIENT = new uPLibrary.Networking.M2Mqtt.MqttClient(Commons.BROKERHOST);
 
@@ -51,16 +70,16 @@ namespace SmartHomeMonitoringApp.Views
                     // Mqtt subscribe(구독할) 로직
                     if (Commons.MQTT_CLIENT.IsConnected == false)
                     {
-                            // Mqtt 접속
-                            Commons.MQTT_CLIENT.MqttMsgPublishReceived += MQTT_CLIENT_MqttMsgPublishReceived;
-                            Commons.MQTT_CLIENT.Connect("MONITOR"); // clientId = 모니터
-                            Commons.MQTT_CLIENT.Subscribe(new string[] { Commons.MQTTTOPIC },
-                                    new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // QOS는 네트워크 통신에 옵선
-                            UpdateLog(">>> MQTT Broker Connected");
+                        // Mqtt 접속
+                        Commons.MQTT_CLIENT.MqttMsgPublishReceived += MQTT_CLIENT_MqttMsgPublishReceived;
+                        Commons.MQTT_CLIENT.Connect("MONITOR"); // clientId = 모니터
+                        Commons.MQTT_CLIENT.Subscribe(new string[] { Commons.MQTTTOPIC },
+                                new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); // QOS는 네트워크 통신에 옵선
+                        UpdateLog(">>> MQTT Broker Connected");
 
-                            BtnConnDb.IsChecked = true;
-                            BtnConnDb.Content = "MQTT 연결중";
-                            IsConnected = true; // 예외발생하면 true로 변경할 필요 없음
+                        BtnConnDb.IsChecked = true;
+                        BtnConnDb.Content = "MQTT 연결중";
+                        IsConnected = true; // 예외발생하면 true로 변경할 필요 없음
                     }
                 }
                 catch (Exception ex)
@@ -88,8 +107,8 @@ namespace SmartHomeMonitoringApp.Views
                     UpdateLog($"!!! Error 발생: {ex.Message}");
                 }
             }
-        }
 
+        }
         private void UpdateLog(string msg)
         {
             // 예외처리 필요!!
@@ -159,6 +178,11 @@ namespace SmartHomeMonitoringApp.Views
                     UpdateLog($"!!! Erorr 발생 : {ex.Message}");
                 }
             }
+        }
+
+        private void BtnConnDb_Checked(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
