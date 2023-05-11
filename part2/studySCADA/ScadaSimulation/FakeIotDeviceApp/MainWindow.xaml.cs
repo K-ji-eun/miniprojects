@@ -18,9 +18,15 @@ namespace FakeIotDeviceApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
-        Faker<SensorInfo> FakeHomeSensor { get; set; } = null; // 가짜 스마트홈 센서값 변수
+        Faker<SensorInfo> FakeHomeSensor { get; set; } = null; // 가짜 스마트홈 센서값 변수 
+
         MqttClient Client { get; set; }
+
         Thread MqttThread { get; set; }
+
+        // MQTT Publish json 데이터 건수 체크변수
+
+        int MaxCount { get; set; } = 10;
 
         public MainWindow()
         {
@@ -73,10 +79,14 @@ namespace FakeIotDeviceApp
                     // 스레드와 UI스레드간 충돌이 안나도록 변경
                     this.Invoke(new Action(() => {
                         // RtbLog에 출력                        
-                        RtbLog.AppendText($"{jsonValue}\n");
-                        RtbLog.ScrollToEnd(); // 스크롤 제일 밑으로 보내기
+                        if (MaxCount <= 0)
+                        {
+                            RtbLog.SelectAll();
+                            RtbLog.Selection.Text = string.Empty;
+                            MaxCount = 50;
+                            RtbLog.AppendText(">>> 문서건수가 많아져서 초기화.\n");
+                        }
                     }));
-                    
                     // 1초동안 대기
                     Thread.Sleep(1000);
                 }
