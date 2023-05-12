@@ -17,7 +17,9 @@ using System.Diagnostics;
 using SmartHomeMonitoringApp.Views;
 using MahApps.Metro.Controls.Dialogs;
 using SmartHomeMonitoringApp.Logics;
+using System.Security.AccessControl;
 using System.ComponentModel;
+using ControlzEx.Theming;
 
 namespace SmartHomeMonitoringApp
 {
@@ -26,9 +28,13 @@ namespace SmartHomeMonitoringApp
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        string DefaultTheme { get; set; } = "Light";
+        string DefaultAccent { get; set; } = "Dark";
         public MainWindow()
         {
             InitializeComponent();
+            ThemeManager.Current.ThemeSyncMode = ThemeSyncMode.SyncWithAppMode;
+            ThemeManager.Current.SyncTheme();
         }
 
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
@@ -57,11 +63,11 @@ namespace SmartHomeMonitoringApp
             {
                 var userControl = new Views.DataBaseControl();
                 ActiveItem.Content = userControl;
-                StsSelScreen.Content = "DataBase Monitoring"; 
+                StsSelScreen.Content = "DataBase Monitoring"; //typeof(Views.DataBaseControl);
             }
         }
 
-        private async void MetroWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void MetroWindow_Closing(object sender, CancelEventArgs e)
         {
             // e.Cancel을 true 하고 시작
             e.Cancel = true;
@@ -69,14 +75,13 @@ namespace SmartHomeMonitoringApp
             var mySettings = new MetroDialogSettings
             {
                 AffirmativeButtonText = "끝내기",
-                NegativeButtonText= "취소",
+                NegativeButtonText = "취소",
                 AnimateShow = true,
                 AnimateHide = true
             };
-            
+
             var result = await this.ShowMessageAsync("프로그램 끝내기", "프로그램을 끝내시겠습니까?",
-                MessageDialogStyle.AffirmativeAndNegative,mySettings);
-            
+                                                     MessageDialogStyle.AffirmativeAndNegative, mySettings);
             if (result == MessageDialogResult.Negative)
             {
                 e.Cancel = true;
@@ -88,7 +93,6 @@ namespace SmartHomeMonitoringApp
                     Commons.MQTT_CLIENT.Disconnect();
                 }
                 Process.GetCurrentProcess().Kill(); // 가장 확실
-
             }
         }
 
@@ -100,9 +104,8 @@ namespace SmartHomeMonitoringApp
 
         private void MnuDataBaseMon_Click(object sender, RoutedEventArgs e)
         {
-            var userControl = new Views.DataBaseControl();
-            ActiveItem.Content = userControl;
-            StsSelScreen.Content = "DataBase Monitoring";
+            ActiveItem.Content = new Views.DataBaseControl();
+            StsSelScreen.Content = "DataBase Monitoring"; //typeof(Views.DataBaseControl);
         }
 
         private void MnuRealTimeMon_Click(object sender, RoutedEventArgs e)
@@ -122,6 +125,56 @@ namespace SmartHomeMonitoringApp
             var about = new About();
             about.Owner = this;
             about.ShowDialog();
+        }
+        private void MnuThemeAccent_Checked(object sender, RoutedEventArgs e)
+        {
+            //클릭하는 테마가 다크인지 라이트인지 판단 다크 선택하면 체크해제 라이트 선택하면 다크 해제
+            Debug.WriteLine((sender as MenuItem).Header);
+            //엑센트도 체크하는 값을 받아고고 액센트 전부 체크해제
+
+            switch ((sender as MenuItem).Header)
+            {
+                case "Light":
+                    MnuLightTheme.IsChecked = true;
+                    MnuDarkTheme.IsChecked = false;
+                    DefaultAccent = "Light";
+                    break;
+                case "Dark":
+                    MnuLightTheme.IsChecked = false;
+                    MnuDarkTheme.IsChecked = true;
+                    DefaultAccent = "Dark";
+                    break;
+                case "Amber":
+                    MnuAccentAmber.IsChecked = true;
+                    MnuAccentBlue.IsChecked = false;
+                    MnuAccentBrown.IsChecked = false;
+                    MnuAccentCobalt.IsChecked = false;
+                    DefaultAccent = "Amber";
+                    break;
+                case "Blue":
+                    MnuAccentAmber.IsChecked = false;
+                    MnuAccentBlue.IsChecked = true;
+                    MnuAccentBrown.IsChecked = false;
+                    MnuAccentCobalt.IsChecked = false;
+                    DefaultAccent = "Blue";
+                    break;
+                case "Brown":
+                    MnuAccentAmber.IsChecked = false;
+                    MnuAccentBlue.IsChecked = false;
+                    MnuAccentBrown.IsChecked = true;
+                    MnuAccentCobalt.IsChecked = false;
+                    DefaultAccent = "Brown";
+                    break;
+                case "Cobalt":
+                    MnuAccentAmber.IsChecked = false;
+                    MnuAccentBlue.IsChecked = false;
+                    MnuAccentBrown.IsChecked = false;
+                    MnuAccentCobalt.IsChecked = true;
+                    DefaultAccent = "Cobalt";
+                    break;
+
+            }
+            ThemeManager.Current.ChangeTheme(this, $"{DefaultTheme}.{DefaultAccent}");
         }
     }
 }
