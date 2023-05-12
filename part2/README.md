@@ -18,10 +18,13 @@
 	- 대용량 데이터 차는 OxyChart를 사용
 
 온습도 더미데이터 시뮬레이터
+
 <img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part2/img/1.gif" width = "510" />
 	
 스마트홈 모니터링 앱
+
 <img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part2/img/2.gif" width = "780" />
 
 스마트홈 모니터링 시각화
+
 <img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part2/img/3.gif" width = "780" />
