@@ -23,8 +23,8 @@
 	
 스마트홈 모니터링 앱
 
-<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part2/img/2.gif" width = "780" />
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part2/img/2.gif" width = "510" />
 
 스마트홈 모니터링 시각화
 
-<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part2/img/3.gif" width = "780" />
+<img src = "https://github.com/K-ji-eun/miniprojects/blob/main/part2/img/3.png" width = "510" />
